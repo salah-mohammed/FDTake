@@ -75,6 +75,9 @@ open class FDTakeController: NSObject {
 
     // MARK: - Callbacks
 
+    /// finish
+    open var finishHandler: (() -> Void)?
+    
     /// A photo was selected
     open var didGetPhoto: ((_ photo: UIImage, _ info: [AnyHashable: Any]) -> Void)?
 
@@ -321,7 +324,9 @@ extension FDTakeController : UIImagePickerControllerDelegate, UINavigationContro
             break
         }
 
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true, completion: {
+            self.finishHandler?();
+        })
     }
 
     /// Conformance for image picker delegate
