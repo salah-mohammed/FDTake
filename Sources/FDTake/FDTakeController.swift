@@ -33,7 +33,9 @@ open class FDTakeController: NSObject {
 
 
     // MARK: - Configuration options
-
+    /// Whether to allow selecting a photo
+    open var allowGetLastMedia = false
+    
     /// Whether to allow selecting a photo
     open var allowsPhoto = true
 
@@ -200,7 +202,9 @@ open class FDTakeController: NSObject {
         if self.allowsSelectFromLibrary {
             if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
                 titleToSource.append((buttonTitle: .chooseFromLibrary, source: .photoLibrary))
-                titleToSource.append((buttonTitle: .lastTakenMedia, source: .photoLibrary))
+                if allowGetLastMedia{
+                    titleToSource.append((buttonTitle: .lastTakenMedia, source: .photoLibrary))
+                }
             } else if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
                 titleToSource.append((buttonTitle: .chooseFromPhotoRoll, source: .savedPhotosAlbum))
             }
