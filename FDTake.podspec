@@ -18,5 +18,4 @@ Pod::Spec.new do |s|
   s.resource_bundles = {
     'Resources' => ['Resources/Resources/**/*.{xib,xcassets,json,imageset,bundle,strings,storyboard}','LocationPicker/View/*.{lproj,storybard}']
   }
-}
 end
